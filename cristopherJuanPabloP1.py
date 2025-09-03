@@ -1,3 +1,4 @@
+#Juan Pablo Ruiz Trujillo y Cristopher Arboleda
 from abc import ABC, abstractmethod
 
 # --- Material base (abstracción y encapsulamiento) ---
@@ -122,3 +123,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
