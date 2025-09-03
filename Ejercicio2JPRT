@@ -1,0 +1,46 @@
+# Función f(X) = X^2
+def f(x):
+    return x ** 2
+
+def buscar_maximo(listas, M, indice=0, suma_actual=0):
+    """Recorre todas las combinaciones y retorna el valor máximo posible."""
+    global max_valor
+    if indice == len(listas):
+        valor_modulo = suma_actual % M
+        if valor_modulo > max_valor:
+            max_valor = valor_modulo
+        return
+    
+    for numero in listas[indice]:
+        buscar_maximo(listas, M, indice + 1, suma_actual + f(numero))
+
+
+print("Presiona Enter para usar el ejemplo por defecto o escribe cualquier cosa para ingresar tus datos.")
+opcion = input("¿Quieres ingresar tus propios datos? ")
+
+if opcion.strip() == "":
+    # Ejemplo por defecto
+    K = 3
+    M = 1000
+    listas = [
+        [5, 4],
+        [7, 8, 9],
+        [5, 5, 7, 8, 9, 10]
+    ]
+else:
+    # Ingreso manual
+    K = int(input("Ingresa la cantidad de listas (K): "))
+    M = int(input("Ingresa el valor de M: "))
+    listas = []
+    for i in range(K):
+        elementos = list(map(int, input(f"Ingrese los elementos de la lista {i+1} separados por espacio: ").split()))
+        listas.append(elementos)
+
+# Buscar el máximo
+max_valor = 0
+buscar_maximo(listas, M)
+
+# Mostrar resultado
+print("\nEl valor máximo obtenido es:", max_valor)
+
+
